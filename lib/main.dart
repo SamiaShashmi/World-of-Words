@@ -3,6 +3,8 @@ import 'package:word_game/pages/dictionary.dart';
 import 'package:word_game/pages/home.dart';
 import 'package:word_game/pages/play.dart';
 import 'package:word_game/widget/navigation_drawer.dart';
+import 'package:http/http.dart' as http;
+
 
 void main() {
   runApp(const MyApp());
