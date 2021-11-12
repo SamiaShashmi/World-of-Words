@@ -29,7 +29,11 @@ class _DictionaryPageState extends State<DictionaryPage> {
         isFound = true;
       });
     } else {
-      isSearched = true;
+      setState(() {
+        isSearched = true;
+        isFound = false;
+      });
+
       Fluttertoast.showToast(
           msg: "Sorry, No Word Found",
           toastLength: Toast.LENGTH_SHORT,
@@ -59,7 +63,8 @@ class _DictionaryPageState extends State<DictionaryPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: GestureDetector(
+      resizeToAvoidBottomInset: false,
+      body: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
           },
@@ -71,7 +76,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
             child: Column(
               children: [
                 Container(
-                  width: 300,
+                  width: 250,
                   margin: const EdgeInsets.all(20),
                   child: TextField(
                     controller: myController,
@@ -83,8 +88,8 @@ class _DictionaryPageState extends State<DictionaryPage> {
                         border: OutlineInputBorder(),
                         hintText: 'Enter any word..',
                         hintStyle:
-                            TextStyle(color: Color(0xffb4aeae), fontSize: 20)),
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                            TextStyle(color: Color(0xffb4aeae), fontSize: 18)),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
                 ElevatedButton(
@@ -109,11 +114,11 @@ class _DictionaryPageState extends State<DictionaryPage> {
                             Text(
                               "${welcome.meanings![0].definitions![0].definition}",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 22),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(
-                              height: 30,
+                              height: 25,
                             ),
                             GestureDetector(
                                 onTap: () {
@@ -125,7 +130,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
                                   color: Color(0xffde5757),
                                 )),
                             const SizedBox(
-                              height: 30,
+                              height: 25,
                             ),
                             Container(
                                 color: Color(0xffde5757),
@@ -133,15 +138,15 @@ class _DictionaryPageState extends State<DictionaryPage> {
                                 child: Text(
                                   '${welcome.meanings![0].partOfSpeech}',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                      color: Colors.white, fontSize: 12),
                                 )),
                             const SizedBox(
-                              height: 30,
+                              height: 22,
                             ),
                             Text(
                               'Example: ${welcome.meanings![0].definitions![0].example}',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                                  TextStyle(color: Colors.white, fontSize: 12),
                               textAlign: TextAlign.center,
                             )
                           ],
