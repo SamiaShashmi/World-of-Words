@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:word_game/pages/dictionary.dart';
 import 'package:word_game/pages/instruction.dart';
 import 'package:word_game/pages/play.dart';
+import 'package:word_game/widget/start_pop_up.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -13,19 +16,8 @@ class NavigationDrawerWidget extends StatelessWidget {
         child: ListView(
           padding: padding,
           children: <Widget>[
-            const SizedBox(height: 16),
-            buildMenuItem(
-              text: "Play",
-              icon: Icons.play_circle,
-              onClicked: () => selectedItem(context, 0)
-            ),
-            const SizedBox(height: 16),
-            buildMenuItem(
-                text: "Dictionary",
-                icon: Icons.menu_book_sharp,
-                onClicked: () => selectedItem(context, 1)
-            ),
-            const SizedBox(height: 16),
+
+            const SizedBox(height: 48),
             buildMenuItem(
                 text: "Instructions",
                 icon: Icons.live_help,
@@ -36,7 +28,8 @@ class NavigationDrawerWidget extends StatelessWidget {
             const SizedBox(height: 24),
             buildMenuItem(
                 text: "Exit",
-                icon: Icons.logout
+                icon: Icons.logout,
+                onClicked: () => selectedItem(context, 3)
             )
           ],
         ),
@@ -61,7 +54,7 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (i) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => PlayPage(),
+            builder: (context) => StartPopUpPage(),
         ));
         break;
       case 1:
@@ -73,6 +66,9 @@ class NavigationDrawerWidget extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => InstructionPage(),
         ));
+        break;
+      case 3:
+        exit(0);
     }
   }
 }

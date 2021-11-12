@@ -88,7 +88,7 @@ class _PlayPageState extends State<PlayPage> {
         'https://api.dictionaryapi.dev/api/v2/entries/en/' + '$madeWord'));
     if (res.statusCode == 200) {
       welcome = Welcome.fromJson(jsonDecode(res.body)[0]);
-      if(welcome!.word!.length == 1 && welcome.word != 'i' && welcome.word != 'a')
+      if(welcome.word!.length == 1 && welcome.word != 'i' && welcome.word != 'a')
         {
           setState(() {
             life = life - 1;
@@ -119,7 +119,7 @@ class _PlayPageState extends State<PlayPage> {
       else
         {
           setState(() {
-            score = score + welcome!.word!.length;
+            score = score + welcome.word!.length;
           });
           showDialog(
             context: context,
@@ -160,7 +160,7 @@ class _PlayPageState extends State<PlayPage> {
   Widget _buildPopupDialog(BuildContext context) {
     return AlertDialog(
       scrollable: true,
-      title: Text('${welcome!.word}', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffde5757), fontWeight: FontWeight.bold, fontSize: 25),),
+      title: Text('${welcome.word}', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffde5757), fontWeight: FontWeight.bold, fontSize: 25),),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -253,6 +253,12 @@ class _PlayPageState extends State<PlayPage> {
   }
 
   @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -261,6 +267,9 @@ class _PlayPageState extends State<PlayPage> {
         ),
         child: Column(
           children: [
+            const SizedBox(
+              height: 50,
+            ),
             Expanded(
               flex: 1,
               child: Container(

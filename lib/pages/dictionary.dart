@@ -107,7 +107,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
                             ),
                             GestureDetector(
                                 onTap: () {
-                                  play('https:${welcome!.phonetics![0].audio}');
+                                  play('https:${welcome.phonetics![0].audio}');
                                 },
                                 child: Icon(
                                   Icons.volume_up,
@@ -121,7 +121,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
                                 color: Color(0xffde5757),
                                 padding: EdgeInsets.all(5),
                                 child: Text(
-                                  '${welcome!.meanings![0].partOfSpeech}',
+                                  '${welcome.meanings![0].partOfSpeech}',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),
                                 )),
