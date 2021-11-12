@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:word_game/classes/word.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DictionaryPage extends StatefulWidget {
   const DictionaryPage({Key? key}) : super(key: key);
@@ -29,6 +30,15 @@ class _DictionaryPageState extends State<DictionaryPage> {
       });
     } else {
       isSearched = true;
+      Fluttertoast.showToast(
+          msg: "Sorry, No Word Found",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
     }
   }
 
@@ -137,20 +147,8 @@ class _DictionaryPageState extends State<DictionaryPage> {
                           ],
                         ),
                       )
-                    : (isSearched
-                        ? Container(
-                            alignment: Alignment.center,
-                            child: Expanded(
-                              flex: 1,
-                              child: Text(
-                                "This is not a valid word..",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 22),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          )
-                        : Container())
+                    :
+                Container()
               ],
             ),
           ),

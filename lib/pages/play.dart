@@ -168,6 +168,17 @@ class _PlayPageState extends State<PlayPage> {
         ],
       ),
       actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.of(context).push (MaterialPageRoute(
+                builder: (context) => MyApp()));
+
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Exit'),
+        ),
         new FlatButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -181,17 +192,7 @@ class _PlayPageState extends State<PlayPage> {
           textColor: Theme.of(context).primaryColor,
           child: const Text('Next'),
         ),
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pop();
-            Navigator.of(context).push (MaterialPageRoute(
-                builder: (context) => MyApp()));
 
-          },
-          textColor: Theme.of(context).primaryColor,
-          child: const Text('Exit'),
-        ),
       ],
     );
   }

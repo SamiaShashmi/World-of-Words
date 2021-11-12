@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'World of Words',
       theme: ThemeData(
         primarySwatch: Colors.red,
+          fontFamily: "RobotoSlab"
       ),
       home: const MainPage(title: 'World of Words',),
     );
