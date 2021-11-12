@@ -8,6 +8,8 @@ import 'dart:convert';
 import 'package:word_game/classes/word.dart';
 import 'package:word_game/pages/home.dart';
 
+import '../main.dart';
+
 class PlayPage extends StatefulWidget {
   const PlayPage({Key? key}) : super(key: key);
 
@@ -179,6 +181,17 @@ class _PlayPageState extends State<PlayPage> {
           textColor: Theme.of(context).primaryColor,
           child: const Text('Next'),
         ),
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.of(context).push (MaterialPageRoute(
+                builder: (context) => MyApp()));
+
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Exit'),
+        ),
       ],
     );
   }
@@ -220,8 +233,9 @@ class _PlayPageState extends State<PlayPage> {
         FlatButton(
           onPressed: () {
             Navigator.of(context).pop();
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => HomePage()));
+            Navigator.of(context).pop();
+            Navigator.of(context).push (MaterialPageRoute(
+                builder: (context) => MyApp()));
 
           },
           textColor: Theme.of(context).primaryColor,

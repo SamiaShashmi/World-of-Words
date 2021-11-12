@@ -4,6 +4,7 @@ import 'package:word_game/pages/home.dart';
 import 'package:word_game/pages/play.dart';
 import 'package:word_game/widget/navigation_drawer.dart';
 import 'package:http/http.dart' as http;
+import 'package:word_game/widget/start_pop_up.dart';
 
 
 void main() {
@@ -38,7 +39,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 int currentIndex = 1;
-final pages = [PlayPage(), HomePage(), DictionaryPage()];
+final pages = [StartPopUpPage(), HomePage(), DictionaryPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +52,7 @@ final pages = [PlayPage(), HomePage(), DictionaryPage()];
         selectedItemColor: Color(0xffde5757),
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
-        backgroundColor: Color(0xff2d2b2b),
+        backgroundColor: Color(0xff363434),
         onTap: (index) => setState(() =>
           currentIndex = index,
         ),
